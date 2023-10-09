@@ -3,12 +3,8 @@ import { useState } from 'react';
 import './index.scss';
 
 function App() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="App">
-      <button className="open-modal-btn" onClick={() => {setOpen(true)}}>✨ Открыть окно</button>
-      <div className= {`overlay animated ${open ? 'show' : ''}`} >
+  const Modal = (open ,setOpen) => {
+    <div className= {`overlay animated ${open ? 'show' : ''}`} >
         <div className="modal">
           <svg onClick={() => {setOpen(false)}} height="200" viewBox="0 0 200 200" width="200">
             <title />
@@ -16,7 +12,14 @@ function App() {
           </svg>
           <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" />
         </div>
-      </div>
+    </div>
+  }
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="App">
+      <button className="open-modal-btn" onClick={() => {setOpen(true)}}>✨ Открыть окно</button>
+      <Modal open ={open} setOpen={setOpen}/>
     </div>
   );
 }
